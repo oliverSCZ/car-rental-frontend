@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const CarsList = ({
+const CarsArray = ({
   id, name, make, image, model,
 }) => (
   <div>
@@ -20,7 +20,7 @@ const CarsList = ({
   </div>
 );
 
-CarsList.propTypes = {
+CarsArray.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   make: PropTypes.string.isRequired,
@@ -28,4 +28,4 @@ CarsList.propTypes = {
   model: PropTypes.string.isRequired,
 };
 
-export default CarsList;
+export default CarsArray;

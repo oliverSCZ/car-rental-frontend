@@ -1,11 +1,16 @@
+import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
-import { useDispatch, useSelector } from 'react-redux';
-import Slider from 'react-slick';
+import { useDispatch } from 'react-redux';
 import { getCars } from './redux/cars/cars';
-import CarsList from './components/Cars/CarsList';
+import Header from './components/Header';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
+import FavoritesPage from './pages/FavoritesPage';
+import CarPage from './pages/CarPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,40 +19,17 @@ function App() {
     dispatch(getCars());
   }, []);
 
-  const carSelector = useSelector(
-    (state) => state.carsReducer,
-  );
-
-  const settings = {
-    className: 'center',
-    centerMode: true,
-    infinite: true,
-    centerPadding: '80px',
-    slidesToShow: 2,
-    speed: 500,
-  };
-  const cars = carSelector.map((car) => (
-
-    <CarsList
-      key={car.id}
-      id={car.id}
-      name={car.name}
-      image={car.image}
-      make={car.make}
-      model={car.model}
-    />
-  ));
-
   return (
     <div className="App">
-      <div>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Slider {...settings}>
-          {cars}
-        </Slider>
-      </div>
+      <Header />
+      <Routes>
+        <Route path="/signup" element={<RegisterPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/car/:carId" element={<CarPage />} />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
-
 export default App;
