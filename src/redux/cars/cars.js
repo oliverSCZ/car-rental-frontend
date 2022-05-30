@@ -10,10 +10,10 @@ export const loadCars = (payload) => ({
   payload,
 });
 
-const addCars = (payload) => ({
-  type: ADD_CARS,
-  payload,
-});
+// const addCars = (payload) => ({
+//   type: ADD_CARS,
+//   payload,
+// });
 
 const getCarsFromApi = async () => {
   const response = await fetch(CARS_ENDPOINT);
