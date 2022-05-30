@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import { getCars } from './redux/cars/cars';
 import CarsList from './components/Cars/CarsList';
+import Navigation from './components/Navigation';
+import FavoritesList from './components/Favorites/FavoritesList';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,9 +14,7 @@ function App() {
     dispatch(getCars());
   }, []);
 
-  const carSelector = useSelector(
-    (state) => state.carsReducer,
-  );
+  const carSelector = useSelector((state) => state.carsReducer);
 
   const settings = {
     className: 'center',
@@ -28,7 +25,6 @@ function App() {
     speed: 500,
   };
   const cars = carSelector.map((car) => (
-
     <CarsList
       key={car.id}
       id={car.id}
@@ -40,13 +36,15 @@ function App() {
   ));
 
   return (
-    <div className="App">
-      <div>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Slider {...settings}>
-          {cars}
-        </Slider>
-      </div>
+    <div className="container-fluid">
+      <Navigation />
+      <p className="page-title">This is the home page</p>
+      <p className="sub-title">Sheer driving pleasure</p>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Slider {...settings}>{cars}</Slider>
+      <Routes>
+        <Route path="/favorites" element={<FavoritesList />} />
+      </Routes>
     </div>
   );
 }
