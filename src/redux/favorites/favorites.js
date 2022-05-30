@@ -24,9 +24,7 @@ const getFavoritesFromApi = async () => {
 export const getFavorites = () => async (dispatch) => {
   const favorites = getFavoritesFromApi();
   favorites.then((favorite) => {
-    favorite.forEach((favorite) => {
-      dispatch(loadFavorites(favorite));
-    });
+    dispatch(loadFavorites(favorite));
   });
 };
 
@@ -48,7 +46,7 @@ export const saveFavoriteToApi = (favorite) => async (dispatch) => {
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_FAVORITES:
-      return [...state, action.payload];
+      return action.payload;
     case ADD_FAVORITES:
       return [...state, action.payload];
     default:
