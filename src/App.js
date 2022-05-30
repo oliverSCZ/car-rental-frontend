@@ -1,17 +1,9 @@
-import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { useDispatch } from 'react-redux';
-import { getFavorites } from './redux/favorites/favorites';
 import Navigation from './components/Navigation';
+import FavoritesList from './components/Favorites/FavoritesList';
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getFavorites());
-  }, []);
-
   return (
     <div className="container-fluid">
       <div className="row">
@@ -28,7 +20,7 @@ function App() {
               <Routes>
                 <Route
                   path="/favourites/:user_id/"
-                  element={<MyAppointments />}
+                  element={<FavoritesList />}
                 />
               </Routes>
             </div>
