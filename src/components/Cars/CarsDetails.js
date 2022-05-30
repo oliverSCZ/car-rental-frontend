@@ -1,25 +1,21 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCars } from '../../redux/cars/cars';
+// import { getCars } from '../../redux/cars/cars';
 
 const CarsDetails = () => {
   const { id } = useParams();
 
-  let carSelector = useSelector((state) => state.carsReducer);
+  const carSelector = useSelector((state) => state.carsReducer);
+  
+  carSelector.map((car) => {
+    console.log(car.name);
+  });
 
-  if (carSelector.length === 0) {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch(getCars());
-    }, []);
-
-    carSelector = useSelector((state) => state.carsReducer);
-  }
   const car = carSelector.find(
     (car) => car.id === parseInt(id, 10),
-  );
+    );
 
   return (
     <div className="grid-cols-3 gap-4 flex items-center">

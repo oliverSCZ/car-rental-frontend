@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
@@ -6,6 +6,7 @@ import { getCars } from './redux/cars/cars';
 import CarsList from './components/Cars/CarsList';
 import Navigation from './components/Navigation';
 import FavoritesList from './components/Favorites/FavoritesList';
+import CarsDetails from './components/Cars/CarsDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,14 +38,18 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <Navigation />
-      <p className="page-title">This is the home page</p>
-      <p className="sub-title">Sheer driving pleasure</p>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Slider {...settings}>{cars}</Slider>
-      <Routes>
-        <Route path="/favorites" element={<FavoritesList />} />
-      </Routes>
+      <BrowserRouter>
+        <Navigation />
+        <p className="page-title">This is the home page</p>
+        <p className="sub-title">Sheer driving pleasure</p>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        {/* <Slider {...settings}>{cars}</Slider> */}
+        <Routes>
+          <Route path="/" element={cars} />
+          <Route path="/favorites" element={<FavoritesList />} />
+          <Route path="/car/:car_id" element={<CarsDetails />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
