@@ -1,28 +1,50 @@
 import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Slider from 'react-slick';
+import { getCars } from './redux/cars/cars';
+import CarsList from './components/Cars/CarsList';
 import Navigation from './components/Navigation';
 import FavoritesList from './components/Favorites/FavoritesList';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCars());
+  }, []);
+
+  const carSelector = useSelector((state) => state.carsReducer);
+
+  const settings = {
+    className: 'center',
+    centerMode: true,
+    infinite: true,
+    centerPadding: '80px',
+    slidesToShow: 2,
+    speed: 500,
+  };
+  const cars = carSelector.map((car) => (
+    <CarsList
+      key={car.id}
+      id={car.id}
+      name={car.name}
+      image={car.image}
+      make={car.make}
+      model={car.model}
+    />
+  ));
+
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-3">
-          <Navigation />
-        </div>
-        <div className="col-md-9">
-          <div className="d-flex flex-column g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div className="justify-center border">
-              <p className="page-title">Cars</p>
-              <p className="sub-title">Sheer driving pleasure</p>
-            </div>
-            <div className="d-flex flex-row">
-              <Routes>
-                <Route path="/favorites" element={<FavoritesList />} />
-              </Routes>
-            </div>
-          </div>
-        </div>
+      <div>
+        <Navigation />
+        <p className="page-title">Cars</p>
+        <p className="sub-title">Sheer driving pleasure</p>
+        <Routes>
+          <Slider {...settings}>{cars}</Slider>
+          <Route path="/favorites" element={<FavoritesList />} />
+        </Routes>
       </div>
     </div>
   );
