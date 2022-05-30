@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import { getCars } from './redux/cars/cars';
