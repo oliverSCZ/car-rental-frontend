@@ -49,12 +49,27 @@ export const saveFavoriteToApi = (favorite) => async (dispatch) => {
     .then((data) => dispatch(addFavorites(data)));
 };
 
+export const deleteFavourite = (favorite) => async (dispatch) => {
+  await fetch(FAVORITES_ENDPOINT, {
+    method: 'delete',
+    body: JSON.stringify({
+      id: favorite.id,
+    }),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(dispatch(removeFavorite(favorite)));
+};
+
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_FAVORITES:
       return action.payload;
     case ADD_FAVORITES:
       return [...state, action.payload];
+    case REMOVE_FAVORITE:
+      return state.filter((favorite) => favorite.id !== action.payload.id);
     default:
       return state;
   }
