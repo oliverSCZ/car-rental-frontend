@@ -1,27 +1,51 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import Slider from 'react-slick';
+import { getCars } from './redux/cars/cars';
+import CarsList from './components/Cars/CarsList';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCars());
+  }, []);
+
+  const carSelector = useSelector(
+    (state) => state.carsReducer,
+  );
+
+  const settings = {
+    className: 'center',
+    centerMode: true,
+    infinite: true,
+    centerPadding: '80px',
+    slidesToShow: 2,
+    speed: 500,
+  };
+  const cars = carSelector.map((car) => (
+
+    <CarsList
+      key={car.id}
+      id={car.id}
+      name={car.name}
+      image={car.image}
+      make={car.make}
+      model={car.model}
+    />
+  ));
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Slider {...settings}>
+          {cars}
+        </Slider>
+      </div>
     </div>
   );
 }
