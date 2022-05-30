@@ -2,6 +2,7 @@ import { FAVORITES_ENDPOINT } from '../../endpoints';
 
 const LOAD_FAVORITES = 'favorites/LOAD_FAVORITES';
 const ADD_FAVORITES = 'favorites/ADD_FAVORITES';
+const REMOVE_FAVORITE = 'favorites/REMOVE_FAVORITE';
 
 const initialState = [];
 
@@ -12,6 +13,11 @@ export const loadFavorites = (payload) => ({
 
 const addFavorites = (payload) => ({
   type: ADD_FAVORITES,
+  payload,
+});
+
+export const removeFavorite = (payload) => ({
+  type: REMOVE_FAVORITE,
   payload,
 });
 
