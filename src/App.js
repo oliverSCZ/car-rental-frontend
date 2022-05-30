@@ -37,15 +37,14 @@ function App() {
 
   return (
     <div className="container-fluid">
-      <div>
-        <Navigation />
-        <p className="page-title">Cars</p>
-        <p className="sub-title">Sheer driving pleasure</p>
-        <Routes>
-          <Slider {...settings}>{cars}</Slider>
-          <Route path="/favorites" element={<FavoritesList />} />
-        </Routes>
-      </div>
+      <Navigation />
+      <p className="page-title">This is the home page</p>
+      <p className="sub-title">Sheer driving pleasure</p>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Slider {...settings}>{cars}</Slider>
+      <Routes>
+        <Route path="/favorites" element={<FavoritesList />} />
+      </Routes>
     </div>
   );
 }

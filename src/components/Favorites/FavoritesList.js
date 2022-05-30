@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites } from '../../redux/favorites/favorites';
 import Favorite from './Favorite';
@@ -24,8 +23,8 @@ const FavoritesList = () => {
   const favorites = favoritesSelector.map((favorite) => (
     <Favorite
       key={favorite.id}
-      car={favorite.car}
-      user={favorite.user}
+      car={favorite.car_id}
+      user={favorite.user_id}
       removeFavorite={() => removeFavorite(favorite.id)}
     />
   ));
