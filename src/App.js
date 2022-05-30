@@ -41,7 +41,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Slider settings={settings}>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Slider {...settings}>
           {cars}
         </Slider>
       </div>
