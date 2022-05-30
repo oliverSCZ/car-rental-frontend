@@ -24,31 +24,29 @@ const getCarsFromApi = async () => {
 export const getCars = () => async (dispatch) => {
   const cars = getCarsFromApi();
   cars.then((car) => {
-    car.forEach((car) => {
-      dispatch(loadCars(car));
-    });
+    dispatch(loadCars([...car]));
   });
 };
 
-export const saveCarToApi = (car) => async (dispatch) => {
-  await fetch(CARS_ENDPOINT, {
-    method: 'post',
-    body: JSON.stringify({
-      ...car,
-    }),
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => dispatch(addCars(data)));
-};
+// export const saveCarToApi = (car) => async (dispatch) => {
+//   await fetch(CARS_ENDPOINT, {
+//     method: 'post',
+//     body: JSON.stringify({
+//       ...car,
+//     }),
+//     headers: {
+//       Accept: 'application/json',
+//       'Content-Type': 'application/json',
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((data) => dispatch(addCars(data)));
+// };
 
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CARS:
-      return [...state, action.payload];
+      return action.payload;
     case ADD_CARS:
       return [...state, action.payload];
     default:
