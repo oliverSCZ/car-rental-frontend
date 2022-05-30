@@ -10,8 +10,8 @@ const Navigation = () => {
     },
     {
       id: 2,
-      path: '/favourites',
-      text: 'Favourites',
+      path: '/favorites',
+      text: 'Favorites',
     },
   ];
 

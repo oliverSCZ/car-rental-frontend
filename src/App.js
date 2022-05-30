@@ -18,10 +18,7 @@ function App() {
             </div>
             <div className="d-flex flex-row">
               <Routes>
-                <Route
-                  path="/favourites/:user_id/"
-                  element={<FavoritesList />}
-                />
+                <Route path="/favorites" element={<FavoritesList />} />
               </Routes>
             </div>
           </div>

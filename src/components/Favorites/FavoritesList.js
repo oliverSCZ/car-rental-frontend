@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFavorites } from './redux/favorites/favorites';
-import { Favorite } from './Favourite';
+import { getFavorites } from '../../redux/favorites/favorites';
+import Favorite from './Favorite';
 
 const FavoritesList = () => {
   const dispatch = useDispatch();
