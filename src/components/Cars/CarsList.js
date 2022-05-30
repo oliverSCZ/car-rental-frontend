@@ -1,61 +1,22 @@
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import React, { Component } from "react";
-import Slider from "react-slick";
 import car from '../../App'
 
-const settings = {
-      className: "center",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
-      speed: 500
-    };
-
-// const CarsList = ({ id, name, make, image, model}) => (
-const CarsList = (props) => (
-
+const CarsList = ({ id, name, make, image, model}) => (
   <div>
-      <h2>{props.name}</h2>
-
-      <Slider {...settings}>
-       { [props].map((item) => {
-        return 
-         <img
-        className="img-fluid"
-        src={item.image}
-        alt={item.model}
-        width="300"
-         />;
-       })}
-      </Slider>
+      <h2 className='font-bold text-center'>{name}</h2>
+      <Link to={`/car/${id}`}>
+        <img
+          className='shadow-xl rounded-md'
+          src={image}
+          alt={model}
+          width="300"
+        />
+        </Link>
+       <h2 className='font-bold text-center'>{make}</h2>
+       <h2 className='font-bold text-center'>{model}</h2>
   </div>
-
-  // <div className="feature col">
-  //   <Link to={`/cars/${id}`}>
-
-  //     <img
-  //       className="img-fluid"
-  //       src={image}
-  //       alt={model}
-  //       width="300"
-  //     />
-  //     <h5>{name}</h5>
-  //     <span>{make}</span>
-  //   </Link>
-  // </div>
-
-     // <div>
-        //    <img
-        //     className="img-fluid"
-        //     src={image}
-        //     alt={model}
-        //     width="300"
-        //   />
-        // </div
-
 );
 
 CarsList.propTypes = {

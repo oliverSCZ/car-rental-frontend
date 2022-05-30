@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites } from './redux/favorites/favorites';
 import { getCars } from './redux/cars/cars';
 import CarsList from './components/Cars/CarsList';
+import Slider from "react-slick";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +20,16 @@ const carSelector = useSelector(
     (state) => state.carsReducer,
   );
 
+const settings = {
+  className: "center",
+  centerMode: true,
+  infinite: true,
+  centerPadding: "180px",
+  slidesToShow: 2,
+  speed: 500
+  };
 const cars = carSelector.map((car) => (
+  
   <CarsList
     key={car.id}
     id={car.id}
@@ -32,8 +42,10 @@ const cars = carSelector.map((car) => (
 
   return (
     <div className="App">
-      <div className="container-fluid">
+      <div>
+      <Slider {...settings}>
           {cars} 
+      </Slider>
       </div>
     </div>
   );
