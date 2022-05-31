@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites } from '../../redux/favorites/favorites';
+import { deleteFavourite } from '../../redux/favorites/favorites';
 import Favorite from './Favorite';
 
 const FavoritesList = () => {
@@ -19,7 +20,7 @@ const FavoritesList = () => {
       id: favoriteId,
     };
 
-    dispatch(removeFavorite(favorite));
+    dispatch(deleteFavourite(favorite, sessionStatus));
   };
 
   const favorites = favoritesSelector.map((favorite) => (

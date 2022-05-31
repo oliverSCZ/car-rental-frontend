@@ -47,7 +47,7 @@ export const getFavorites = (sessionStatus) => async (dispatch) => {
   });
 };
 
-export const postBook = (favorite, sessionStatus) => async (dispatch) => {
+export const postFavorite = (favorite, sessionStatus) => async (dispatch) => {
   let { userId, token } = sessionStatus;
 
   if (userId === 0) {
@@ -58,7 +58,7 @@ export const postBook = (favorite, sessionStatus) => async (dispatch) => {
   await fetch(FAVORITES_ENDPOINT(userId), {
     method: 'post',
     body: JSON.stringify({
-      ...favorite, // {car_id: 1}
+      ...favorite,
     }),
     headers: {
       Accept: 'application/json',
@@ -70,18 +70,28 @@ export const postBook = (favorite, sessionStatus) => async (dispatch) => {
     .then((data) => dispatch(addFavorites(data)));
 };
 
-export const deleteFavourite = (favorite) => async (dispatch) => {
-  await fetch(FAVORITES_ENDPOINT, {
-    method: 'delete',
-    body: JSON.stringify({
-      id: favorite.id,
-    }),
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  }).then(dispatch(removeFavorite(favorite)));
-};
+export const deleteFavourite =
+  (favorite, sessionStatus) => async (dispatch) => {
+    let { userId, token } = sessionStatus;
+
+    if (userId === 0) {
+      userId = 1;
+      token =
+        'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
+    }
+
+    await fetch(`${FAVORITES_ENDPOINT(userId)}/${favorite.id}`, {
+      method: 'delete',
+      body: JSON.stringify({
+        id: favorite.id,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    }).then(dispatch(removeFavorite(favorite)));
+  };
 
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {

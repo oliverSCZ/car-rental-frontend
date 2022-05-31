@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { postBook } from '../redux/favorites/favorites';
+import { postFavorite } from '../redux/favorites/favorites';
 
 const CarPage = () => {
   window.scrollTo(0, 0);
@@ -17,7 +17,7 @@ const CarPage = () => {
     const newFavourite = {
       car_id: currentCar.id,
     };
-    dispatch(postBook(newFavourite, sessionStatus));
+    dispatch(postFavorite(newFavourite, sessionStatus));
   };
 
   return (
