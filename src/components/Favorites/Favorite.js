@@ -3,34 +3,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Favorite = ({ favorite, removeFavorite }) => {
-  const { car_id, user_id } = favorite;
+const Favorite = ({ car, removeFavorite }) => {
+  const {
+    image, make, model, name,
+  } = car;
+
   return (
-    <div className="card">
-      <div className="card-body">
-        <div className="row">
-          <div className="col-md-6 col-sm-12">
-            <p className="car-model">Car Id: {car_id}</p>
-            <p className="car-description">{user_id}</p>
-            <div className="d-flex justify-content-start align-items-center">
-              <button
-                type="button"
-                className="btn btn-link book-links border-end border-end-1 px-2"
-                onClick={removeFavorite}
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="p-10 pt-20">
+      <h1 className="text-3xl font-bold">My Fav cars</h1>
+      <div className="container mx-auto text-3xl">
+        {name}
+        {make}
+        <img
+          className="shadow-xl rounded-md"
+          src={image}
+          alt={model}
+          width="300"
+        />
+        <button
+          type="button"
+          className="btn btn-link book-links border-end border-end-1 px-2"
+          onClick={removeFavorite}
+        >
+          Remove
+        </button>
       </div>
     </div>
   );
 };
 Favorite.propTypes = {
-  favorite: PropTypes.shape({
-    user_id: PropTypes.number.isRequired,
-    car_id: PropTypes.number.isRequired,
+  car: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    make: PropTypes.string.isRequired,
+    model: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }).isRequired,
   removeFavorite: PropTypes.func.isRequired,
 };

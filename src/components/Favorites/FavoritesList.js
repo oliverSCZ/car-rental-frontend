@@ -22,13 +22,20 @@ const FavoritesList = () => {
     dispatch(deleteFavourite(favorite, sessionStatus));
   };
 
-  const favorites = favoritesSelector.map((favorite) => (
-    <Favorite
-      key={favorite.id}
-      favorite={favorite}
-      removeFavorite={() => removeFavorite(favorite.id)}
-    />
-  ));
+  const cars = useSelector((state) => state.carsReducer);
+
+  const favorites = favoritesSelector.map((favorite) => {
+    const currentCar = cars.filter(
+      (car) => car.id === parseInt(favorite.car_id, 10),
+    )[0];
+    return (
+      <Favorite
+        key={favorite.id}
+        car={currentCar}
+        removeFavorite={() => removeFavorite(favorite.id)}
+      />
+    );
+  });
 
   return (
     <div className="p-10 pt-20">
