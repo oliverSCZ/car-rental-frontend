@@ -1,17 +1,22 @@
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import store from '../redux/configureStore';
+import { useSelector, useDispatch } from 'react-redux';
+import { postBook } from '../redux/favorites/favorites';
 
 const CarPage = () => {
   window.scrollTo(0, 0);
   const { carId } = useParams();
   const cars = useSelector((state) => state.carsReducer);
 
-  const currentCar = cars.filter(
-    (car) => car.id === parseInt(carId, 10),
-  )[0];
+  const currentCar = cars.filter((car) => car.id === parseInt(carId, 10))[0];
 
-  console.log(store.getState());
+  const dispatch = useDispatch();
+
+  const addCarToFavorites = () => {
+    const newFavourite = {
+      car_id: currentCar.id,
+    };
+    dispatch(postBook(newFavourite));
+  };
 
   return (
     <div className="p-10 pt-20">
@@ -24,6 +29,12 @@ const CarPage = () => {
           alt={currentCar.model}
           width="300"
         />
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={addCarToFavorites}>
+          Add to Favorites
+        </button>
       </div>
     </div>
   );

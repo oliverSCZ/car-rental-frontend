@@ -21,28 +21,49 @@ export const removeFavorite = (payload) => ({
   payload,
 });
 
-const getFavoritesFromApi = async () => {
-  const response = await fetch(FAVORITES_ENDPOINT);
+const getFavoritesFromApi = async (sessionStatus) => {
+  let { userId, token } = sessionStatus;
+
+  if (userId === 0) {
+    userId = 1;
+    token =
+      'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
+  }
+  const response = await fetch(FAVORITES_ENDPOINT(userId), {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  });
   const favorites = await response.json();
   return favorites;
 };
 
-export const getFavorites = () => async (dispatch) => {
-  const favorites = getFavoritesFromApi();
+export const getFavorites = (sessionStatus) => async (dispatch) => {
+  const favorites = getFavoritesFromApi(sessionStatus);
   favorites.then((favorite) => {
     dispatch(loadFavorites(favorite));
   });
 };
 
-export const saveFavoriteToApi = (favorite) => async (dispatch) => {
-  await fetch(FAVORITES_ENDPOINT, {
+export const postBook = (favorite, sessionStatus) => async (dispatch) => {
+  let { userId, token } = sessionStatus;
+
+  if (userId === 0) {
+    userId = 1;
+    token =
+      'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
+  }
+  await fetch(FAVORITES_ENDPOINT(userId), {
     method: 'post',
     body: JSON.stringify({
-      ...favorite,
+      ...favorite, // {car_id: 1}
     }),
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: token,
     },
   })
     .then((response) => response.json())

@@ -9,7 +9,7 @@ import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
-import FavoritesPage from './pages/FavoritesPage';
+import FavoritesList from './components/Favorites/FavoritesList';
 import CarPage from './pages/CarPage';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/signup" element={<RegisterPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/favorites" element={<FavoritesList />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/car/:carId" element={<CarPage />} />
         <Route path="/" element={<HomePage />} />

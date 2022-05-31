@@ -4,10 +4,12 @@ import { getFavorites } from '../../redux/favorites/favorites';
 import Favorite from './Favorite';
 
 const FavoritesList = () => {
+  const sessionStatus = useSelector((state) => state.sessionStatus);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFavorites());
+    dispatch(getFavorites(sessionStatus));
   }, []);
 
   const favoritesSelector = useSelector((state) => state.favoritesReducer);
@@ -23,13 +25,18 @@ const FavoritesList = () => {
   const favorites = favoritesSelector.map((favorite) => (
     <Favorite
       key={favorite.id}
-      car={favorite.car_id}
-      user={favorite.user_id}
+      favorite={favorite}
       removeFavorite={() => removeFavorite(favorite.id)}
     />
   ));
 
-  return <div>{favorites}</div>;
+  return (
+    <div className="p-10 pt-20">
+      <h1 className="text-3xl font-bold">My Favorites</h1>
+      <div className="container mx-auto flex flex-col">FAVS</div>
+      <>{favorites}</>
+    </div>
+  );
 };
 
 export default FavoritesList;
