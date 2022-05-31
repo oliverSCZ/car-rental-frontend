@@ -26,8 +26,7 @@ const getFavoritesFromApi = async (sessionStatus) => {
 
   if (userId === 0) {
     userId = 1;
-    token =
-      'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
+    token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
   }
   const response = await fetch(FAVORITES_ENDPOINT(userId), {
     headers: {
@@ -52,8 +51,7 @@ export const postFavorite = (favorite, sessionStatus) => async (dispatch) => {
 
   if (userId === 0) {
     userId = 1;
-    token =
-      'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
+    token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
   }
   await fetch(FAVORITES_ENDPOINT(userId), {
     method: 'post',
@@ -70,28 +68,26 @@ export const postFavorite = (favorite, sessionStatus) => async (dispatch) => {
     .then((data) => dispatch(addFavorites(data)));
 };
 
-export const deleteFavourite =
-  (favorite, sessionStatus) => async (dispatch) => {
-    let { userId, token } = sessionStatus;
+export const deleteFavourite = (favorite, sessionStatus) => async (dispatch) => {
+  let { userId, token } = sessionStatus;
 
-    if (userId === 0) {
-      userId = 1;
-      token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
-    }
+  if (userId === 0) {
+    userId = 1;
+    token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
+  }
 
-    await fetch(`${FAVORITES_ENDPOINT(userId)}/${favorite.id}`, {
-      method: 'delete',
-      body: JSON.stringify({
-        id: favorite.id,
-      }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: token,
-      },
-    }).then(dispatch(removeFavorite(favorite)));
-  };
+  await fetch(`${FAVORITES_ENDPOINT(userId)}/${favorite.id}`, {
+    method: 'delete',
+    body: JSON.stringify({
+      id: favorite.id,
+    }),
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  }).then(dispatch(removeFavorite(favorite)));
+};
 
 const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {

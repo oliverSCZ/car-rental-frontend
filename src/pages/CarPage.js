@@ -34,7 +34,8 @@ const CarPage = () => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={addCarToFavorites}>
+          onClick={addCarToFavorites}
+        >
           Add to Favorites
         </button>
       </div>
