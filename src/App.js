@@ -11,7 +11,9 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import FavoritesList from './components/Favorites/FavoritesList';
 import CarPage from './pages/CarPage';
+import getData from './redux/getLocalData';
 
+getData();
 function App() {
   const dispatch = useDispatch();
 

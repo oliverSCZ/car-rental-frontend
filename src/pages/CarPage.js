@@ -33,7 +33,7 @@ const CarPage = () => {
         />
         <button
           type="button"
-          className="btn btn-primary"
+          className={`btn btn-primary border rounded-lg ${sessionStatus.logged_in ? 'block' : 'hidden'}`}
           onClick={addCarToFavorites}
         >
           Add to Favorites
