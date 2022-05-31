@@ -7,6 +7,8 @@ const CarPage = () => {
   const { carId } = useParams();
   const cars = useSelector((state) => state.carsReducer);
 
+  const sessionStatus = useSelector((state) => state.sessionStatus);
+
   const currentCar = cars.filter((car) => car.id === parseInt(carId, 10))[0];
 
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const CarPage = () => {
     const newFavourite = {
       car_id: currentCar.id,
     };
-    dispatch(postBook(newFavourite));
+    dispatch(postBook(newFavourite, sessionStatus));
   };
 
   return (
