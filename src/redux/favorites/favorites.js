@@ -22,12 +22,8 @@ export const removeFavorite = (payload) => ({
 });
 
 const getFavoritesFromApi = async (sessionStatus) => {
-  let { userId, token } = sessionStatus;
+  const { userId, token } = sessionStatus;
 
-  if (userId === 0) {
-    userId = 1;
-    token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
-  }
   const response = await fetch(FAVORITES_ENDPOINT(userId), {
     headers: {
       Accept: 'application/json',
@@ -47,12 +43,8 @@ export const getFavorites = (sessionStatus) => async (dispatch) => {
 };
 
 export const postFavorite = (favorite, sessionStatus) => async (dispatch) => {
-  let { userId, token } = sessionStatus;
+  const { userId, token } = sessionStatus;
 
-  if (userId === 0) {
-    userId = 1;
-    token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
-  }
   await fetch(FAVORITES_ENDPOINT(userId), {
     method: 'post',
     body: JSON.stringify({
@@ -69,12 +61,7 @@ export const postFavorite = (favorite, sessionStatus) => async (dispatch) => {
 };
 
 export const deleteFavourite = (favorite, sessionStatus) => async (dispatch) => {
-  let { userId, token } = sessionStatus;
-
-  if (userId === 0) {
-    userId = 1;
-    token = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.F1gbh-0wp2YlUMchplazvD7PAtA4YEebKPjgMNmECRI';
-  }
+  const { userId, token } = sessionStatus;
 
   await fetch(`${FAVORITES_ENDPOINT(userId)}/${favorite.id}`, {
     method: 'delete',
