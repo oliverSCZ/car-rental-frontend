@@ -9,8 +9,13 @@ const sessionStatus = (state = sessionInitialState, action) => {
       return {
         ...state, token: action.payload.token, userId: action.payload.user.id, logged_in: true,
       };
+    case 'SESSION_RECOVERY':
+      return {
+        ...state, token: action.payload.token, userId: action.payload.userId, logged_in: true,
+      };
     case 'LOGOUT':
       // console.log('LOGOUT!');
+      localStorage.clear();
       return {
         ...state, token: '', userId: 0, logged_in: false,
       };

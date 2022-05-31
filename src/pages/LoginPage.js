@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import saveData from '../redux/saveLocalData';
 import store from '../redux/configureStore';
 
 const baseURL = 'http://localhost:3001/login';
@@ -7,7 +8,7 @@ const baseURL = 'http://localhost:3001/login';
 const loginCall = async (baseURL, options) => {
   fetch(baseURL, options)
     .then((response) => response.json())
-    .then((json) => store.dispatch({ type: 'LOGIN', payload: json }));
+    .then((json) => { store.dispatch({ type: 'LOGIN', payload: json }); saveData(); });
 };
 
 const handleSubmit = (event) => {
