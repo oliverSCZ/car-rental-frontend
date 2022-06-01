@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Options from './Options';
 import Arrow from '../imgs/arrow.png';
 import More from '../imgs/more.png';
 
@@ -13,14 +12,7 @@ const Header = () => {
   const showMenu = useSelector((state) => state.optionsStatus);
   return (
     <div className="fixed z-40 w-full">
-      <header className={`sticky flex h-16 justify-between py-4 px-3 ${
-        pathname === '/login' ? 'bg-transparent' : 'bg-orange-600'
-      } ${
-        pathname === '/signup' ? 'bg-transparent' : 'bg-orange-600'
-      } ${
-        showMenu.show ? 'bg-gray-800/95' : 'bg-orange-600'
-      }`}
-      >
+      <header className="sticky h-16 flex justify-between py-4 px-3 bg-transparent">
         <div className="invert">
           <button
             type="button"
@@ -37,7 +29,9 @@ const Header = () => {
               alt="arrow-back"
               src={Arrow}
               width="25"
-              className=""
+              style={{
+                filter: 'invert(0.50)',
+              }}
             />
           </button>
         </div>
@@ -61,13 +55,15 @@ const Header = () => {
             alt="options"
             src={More}
             width="25"
-            className={`pt-1 invert ${
+            className={`pt-1 ${
               showMenu.show ? 'hidden' : 'block'
             }`}
+            style={{
+              filter: 'invert(0.50)',
+            }}
           />
         </button>
       </header>
-      <Options />
     </div>
   );
 };
