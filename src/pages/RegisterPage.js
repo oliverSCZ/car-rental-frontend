@@ -48,7 +48,7 @@ const RegisterPage = () => {
       <div className="w-full m-0 p-10 flex flex-col content-center justify-center bg-white/75">
         <h1 className="text-4xl mb-2">Register</h1>
         <div className="flex justify-center m-5 mb-20">
-          <p className="text-base w-2/3 font-medium">Welcome! We are happy to have to here!</p>
+          <p className="text-base w-2/3 font-medium">Welcome! We are happy to have to here!!</p>
         </div>
         <div className="container mx-auto flex flex-col w-4/6">
           <form onSubmit={handleSubmit}>
