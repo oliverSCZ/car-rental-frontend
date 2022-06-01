@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Options from './Options';
 import Arrow from '../imgs/arrow.png';
-import More from '../imgs/more.png';
+// import More from '../imgs/more.png';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +18,8 @@ const Header = () => {
           pathname === '/login' ? 'bg-transparent' : 'bg-orange-600'
         } ${pathname === '/signup' ? 'bg-transparent' : 'bg-orange-600'} ${
           showMenu.show ? 'bg-gray-800/95' : 'bg-orange-600'
-        }`}>
+        }`}
+      >
         <div className="invert">
           <button
             type="button"
@@ -27,7 +28,8 @@ const Header = () => {
               navigate('/');
               dispatch({ type: 'HIDE' });
             }}
-            className={`${pathname === '/' ? 'hidden' : 'block'}`}>
+            className={`${pathname === '/' ? 'hidden' : 'block'}`}
+          >
             <img alt="arrow-back" src={Arrow} width="25" className="" />
           </button>
         </div>
@@ -36,7 +38,8 @@ const Header = () => {
             pathname === '/login' ? 'hidden' : 'block'
           } ${pathname === '/signup' ? 'hidden' : 'block'} ${
             showMenu.show ? 'hidden' : 'block'
-          }`}>
+          }`}
+        >
           RENT-A-CAR
         </h1>
         <svg
@@ -46,7 +49,8 @@ const Header = () => {
           viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth={2}
-          onClick={() => dispatch({ type: 'SHOW' })}>
+          onClick={() => dispatch({ type: 'SHOW' })}
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
