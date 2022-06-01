@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Options from './Options';
 import Arrow from '../imgs/arrow.png';
 import More from '../imgs/more.png';
@@ -10,12 +10,15 @@ const Header = () => {
   const location = useLocation();
   const { pathname } = location;
   const dispatch = useDispatch();
+  const showMenu = useSelector((state) => state.optionsStatus);
   return (
     <div className="fixed z-40 w-full">
       <header className={`sticky flex h-16 justify-between py-4 px-3 ${
         pathname === '/login' ? 'bg-transparent' : 'bg-orange-600'
       } ${
         pathname === '/signup' ? 'bg-transparent' : 'bg-orange-600'
+      } ${
+        showMenu.show ? 'bg-gray-800/95' : 'bg-orange-600'
       }`}
       >
         <div className="invert">
@@ -42,6 +45,8 @@ const Header = () => {
           pathname === '/login' ? 'hidden' : 'block'
         } ${
           pathname === '/signup' ? 'hidden' : 'block'
+        } ${
+          showMenu.show ? 'hidden' : 'block'
         }`}
         >
           Rent-a-Car
@@ -52,7 +57,14 @@ const Header = () => {
           className="pr-3"
           onClick={() => dispatch({ type: 'SHOW' })}
         >
-          <img alt="options" src={More} width="25" className="pt-1 invert" />
+          <img
+            alt="options"
+            src={More}
+            width="25"
+            className={`pt-1 invert ${
+              showMenu.show ? 'hidden' : 'block'
+            }`}
+          />
         </button>
       </header>
       <Options />
