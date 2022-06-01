@@ -24,7 +24,7 @@ const Options = () => {
         </li>
         <li className={`py-6 ${session.logged_in ? 'hidden' : 'block'}`}>
           <button type="button" onClick={() => { navigate('/login'); dispatch({ type: 'HIDE' }); }}>
-            Login
+            Sign in
           </button>
         </li>
         <li className={`py-6 ${session.logged_in ? 'hidden' : 'block'}`}>
