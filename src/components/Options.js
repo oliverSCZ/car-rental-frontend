@@ -37,25 +37,6 @@ const Options = () => {
               Favorites
             </button>
           </li>
-          <li className={`py-5 ${session.logged_in ? 'block' : 'hidden'}`}>
-            <button type="button" onClick={() => { navigate('/'); dispatch({ type: 'HIDE' }); }}>
-              Dashboard
-            </button>
-          </li>
-          <li className={`py-5 ${session.logged_in ? 'block' : 'hidden'}`}>
-            <button type="button" onClick={() => { navigate('/'); dispatch({ type: 'HIDE' }); }}>
-              Notifications
-              {' '}
-              <span className="ml-1 text-lg border rounded-full bg-orange-600 px-2"> 6 </span>
-            </button>
-          </li>
-          <li className={`py-5 ${session.logged_in ? 'block' : 'hidden'}`}>
-            <button type="button" onClick={() => { navigate('/'); dispatch({ type: 'HIDE' }); }}>
-              Messages
-              {' '}
-              <span className="ml-1 text-lg border rounded-full bg-orange-600 px-2"> 2 </span>
-            </button>
-          </li>
           <li className={`py-5 pt-36 text-3xl ${session.logged_in ? 'hidden' : 'block'}`}>
             <button type="button" onClick={() => { navigate('/login'); dispatch({ type: 'HIDE' }); }}>
               Sign in

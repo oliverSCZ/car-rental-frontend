@@ -15,7 +15,7 @@ const Header = () => {
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-6 w-6 ${pathname === '/' ? 'hidden' : 'block'}`}
+            className={`h-10 w-10 ${pathname === '/' ? 'hidden' : 'block'}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -43,7 +43,7 @@ const Header = () => {
         </h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className={`h-6 w-6  ${showMenu.show ? 'hidden' : 'block'}`}
+          className={`h-10 w-10 pr-2 ${showMenu.show ? 'hidden' : 'block'}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
