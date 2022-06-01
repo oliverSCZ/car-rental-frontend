@@ -1,15 +1,24 @@
 import { useSelector } from 'react-redux';
 import CarList from '../components/Cars/CarList';
-// import CarSlide from '../components/Cars/CarSlide';
+import Slider from 'react-slick';
 
 const HomePage = () => {
   const cars = useSelector((state) => state.carsReducer);
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <div className="p-10 pt-20">
-      <h1 className="text-3xl font-bold mb-6">HOME</h1>
       <div className="container mx-auto flex flex-col">
-        <CarList cars={cars} />
+        <Slider {...settings}>
+          <CarList cars={cars} />
+        </Slider>
       </div>
     </div>
   );

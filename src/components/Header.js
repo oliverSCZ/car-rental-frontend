@@ -13,14 +13,12 @@ const Header = () => {
   const showMenu = useSelector((state) => state.optionsStatus);
   return (
     <div className="fixed z-40 w-full">
-      <header className={`sticky flex h-16 justify-between py-4 px-3 ${
-        pathname === '/login' ? 'bg-transparent' : 'bg-orange-600'
-      } ${
-        pathname === '/signup' ? 'bg-transparent' : 'bg-orange-600'
-      } ${
-        showMenu.show ? 'bg-gray-800/95' : 'bg-orange-600'
-      }`}
-      >
+      <header
+        className={`sticky application-header flex h-16 justify-between py-4 px-3 ${
+          pathname === '/login' ? 'bg-transparent' : 'bg-orange-600'
+        } ${pathname === '/signup' ? 'bg-transparent' : 'bg-orange-600'} ${
+          showMenu.show ? 'bg-gray-800/95' : 'bg-orange-600'
+        }`}>
         <div className="invert">
           <button
             type="button"
@@ -29,43 +27,32 @@ const Header = () => {
               navigate('/');
               dispatch({ type: 'HIDE' });
             }}
-            className={`${
-              pathname === '/' ? 'hidden' : 'block'
-            }`}
-          >
-            <img
-              alt="arrow-back"
-              src={Arrow}
-              width="25"
-              className=""
-            />
+            className={`${pathname === '/' ? 'hidden' : 'block'}`}>
+            <img alt="arrow-back" src={Arrow} width="25" className="" />
           </button>
         </div>
-        <h1 className={`font-Work text-2xl font-bold text-white ${
-          pathname === '/login' ? 'hidden' : 'block'
-        } ${
-          pathname === '/signup' ? 'hidden' : 'block'
-        } ${
-          showMenu.show ? 'hidden' : 'block'
-        }`}
-        >
-          Rent-a-Car
-
+        <h1
+          className={`font-Work text-2xl font-bold text-gray-800 ${
+            pathname === '/login' ? 'hidden' : 'block'
+          } ${pathname === '/signup' ? 'hidden' : 'block'} ${
+            showMenu.show ? 'hidden' : 'block'
+          }`}>
+          RENT-A-CAR
         </h1>
-        <button
-          type="button"
-          className="pr-3"
-          onClick={() => dispatch({ type: 'SHOW' })}
-        >
-          <img
-            alt="options"
-            src={More}
-            width="25"
-            className={`pt-1 invert ${
-              showMenu.show ? 'hidden' : 'block'
-            }`}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`h-6 w-6  ${showMenu.show ? 'hidden' : 'block'}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+          onClick={() => dispatch({ type: 'SHOW' })}>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h8m-8 6h16"
           />
-        </button>
+        </svg>
       </header>
       <Options />
     </div>
