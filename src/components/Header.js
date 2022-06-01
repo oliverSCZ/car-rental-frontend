@@ -2,8 +2,6 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Options from './Options';
-import Arrow from '../imgs/arrow.png';
-// import More from '../imgs/more.png';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,17 +19,24 @@ const Header = () => {
         }`}
       >
         <div className="invert">
-          <button
-            type="button"
-            id="go-back"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`h-6 w-6 ${pathname === '/' ? 'hidden' : 'block'}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
             onClick={() => {
               navigate('/');
               dispatch({ type: 'HIDE' });
             }}
-            className={`${pathname === '/' ? 'hidden' : 'block'}`}
           >
-            <img alt="arrow-back" src={Arrow} width="25" className="" />
-          </button>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
         </div>
         <h1
           className={`font-Work text-2xl font-bold text-gray-800 ${
