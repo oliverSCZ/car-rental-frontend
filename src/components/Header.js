@@ -35,7 +35,7 @@ const Header = () => {
         <h1
           className={`font-Work text-2xl font-bold text-gray-800 ${
             pathname === '/login' ? 'hidden' : 'block'
-          } ${pathname === '/signup' ? 'hidden' : 'block'} ${
+          } ${pathname === '/signup' ? 'hidden' : 'block'} ${pathname.includes('/car/') ? 'hidden' : 'block'} ${
             showMenu.show ? 'hidden' : 'block'
           }`}
         >

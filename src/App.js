@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App h-screen">
       <Options />
       <Header />
       <Routes>
