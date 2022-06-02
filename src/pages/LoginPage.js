@@ -51,7 +51,7 @@ const LoginPage = () => {
         <div className="flex justify-center m-5 mb-20">
           <p className="text-base w-2/3 font-medium">Hello there! Sign in and start adding your favorites</p>
         </div>
-        <div className="container mx-auto flex flex-col w-4/6">
+        <div className="container mx-auto flex flex-col w-full">
           <form onSubmit={handleSubmit}>
 
             <div className="container flex flex-col">

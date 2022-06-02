@@ -56,7 +56,7 @@ const CarPage = () => {
           <div className="rounded-md shadow">
             <button
               type="button"
-              className={`w-full flex items-center justify-center px-8 py-6 border border-transparent text-base font-medium text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10 ${
+              className={`active:bg-orange-400 w-full flex items-center justify-center px-8 py-6 border border-transparent text-base font-medium text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10 ${
                 sessionStatus.logged_in ? 'block' : 'hidden'
               }`}
               onClick={addCarToFavorites}>
