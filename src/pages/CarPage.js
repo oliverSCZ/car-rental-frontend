@@ -21,8 +21,8 @@ const CarPage = () => {
     dispatch(postFavorite(newFavourite, sessionStatus));
   };
   return (
-    <div className=" mx-auto pt-10">
-      <div className="mt-10 flex flex-col justify-between">
+    <div className="h-full flex mx-auto pt-10">
+      <div className="mt-10">
         <h3 className="text-base font-semibold tracking-wide uppercase text-gray-900 sm:mt-0 sm:col-span-2 p-3">
           {currentCar.make}
           {' '}
