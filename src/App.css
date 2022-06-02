@@ -23,6 +23,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+input[type="radio"]{
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
 
 .App-link {
   color: #61dafb;

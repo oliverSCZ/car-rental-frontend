@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
+import StarRating from './StarRating';
 
 const CarList = (props) => {
   let carList = [];
@@ -16,25 +17,37 @@ const CarList = (props) => {
   };
   const cars = carSelector;
   carList = cars.map((car) => (
-    <Link
-      key={car.id}
-      to={`/car/${car.id}`}
-      className="greeting-card border text-black text-2xl p-3 m-3"
-    >
-      <div>
-        <h3 className="font-bold text-center">{car.name}</h3>
-        <p className="font-bold text-center">{car.make}</p>
-        <p className="font-bold text-center">{car.model}</p>
-      </div>
-      <div>
-        <img
-          className="shadow-xl rounded-md"
-          src={car.image}
-          alt={car.model}
-          width="300"
-        />
-      </div>
-    </Link>
+    <>
+      <Link
+        key={car.id}
+        to={`/car/${car.id}`}
+        className="greeting-card border text-black text-2xl p-4 m-3"
+      >
+        <div>
+          <img
+            className="shadow-xl rounded-md m-0 content-center"
+            src={car.image}
+            alt={car.model}
+            width="auto"
+          />
+        </div>
+
+        <div className="rounded bg-white grid grid-cols-2 gap-4 shadow-xl">
+          <div>
+            <h3 className="text-lg text-left px-5 py-2.5">{car.name}</h3>
+          </div>
+          <div>
+            <p className="text-lg text-center px-5 py-2.5">{car.make}</p>
+          </div>
+          <div>
+            <StarRating />
+          </div>
+          <div>
+            <p className="text-lg text-center px-5 py-2.5">{car.model}</p>
+          </div>
+        </div>
+      </Link>
+    </>
   ));
   return (
     <div>
