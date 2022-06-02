@@ -12,7 +12,7 @@ const CarList = (props) => {
     centerMode: true,
     infinite: true,
     centerPadding: '50px',
-    slidesToShow: 1,
+    slidesToShow: 2,
     speed: 500,
   };
   const cars = carSelector;

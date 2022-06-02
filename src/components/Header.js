@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import Arrow from '../imgs/arrow.png';
+import Rent from '../imgs/rent.png';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const showMenu = useSelector((state) => state.optionsStatus);
   return (
-    <div className="fixed z-40 w-full">
+    <div className="fixed z-40 w-full md:hidden lg:hidden">
       <header className="sticky h-16 flex justify-between py-4 px-3 bg-transparent">
         <div>
           <svg
@@ -32,15 +32,15 @@ const Header = () => {
             />
           </svg>
         </div>
-        <h1
-          className={`font-Work text-2xl font-bold text-gray-800 ${
+        <div
+          className={`w-3/6 text-2xl font-bold text-gray-800 ${
             pathname === '/login' ? 'hidden' : 'block'
           } ${pathname === '/signup' ? 'hidden' : 'block'} ${pathname.includes('/car/') ? 'hidden' : 'block'} ${
             showMenu.show ? 'hidden' : 'block'
           }`}
         >
-          RENT-A-CAR
-        </h1>
+          <img src={Rent} alt="rent" />
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`h-10 w-10 pr-2 ${showMenu.show ? 'hidden' : 'block'}`}
