@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-closing-bracket-location */
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { postFavorite } from '../redux/favorites/favorites';
@@ -44,7 +43,7 @@ const CarPage = () => {
             className="shadow-xl mix-blend-overlay"
             src={currentCar.image}
             alt="Toyota Corolla"
-        />
+          />
         </div>
         <div className="bg-white h-full container flex flex-col justify-between">
           <div className="bg-white p-9 pb-4">
@@ -59,7 +58,8 @@ const CarPage = () => {
               className={`w-full flex items-center justify-center px-8 py-6 border border-transparent text-base font-medium text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10 ${
                 sessionStatus.logged_in ? 'block' : 'hidden'
               }`}
-              onClick={addCarToFavorites}>
+              onClick={addCarToFavorites}
+            >
               Add to Favorites
             </button>
           </div>
