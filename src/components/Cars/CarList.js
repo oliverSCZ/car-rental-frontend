@@ -17,7 +17,7 @@ const CarList = (props) => {
   };
   const cars = carSelector;
   carList = cars.map((car) => (
-    <>
+    <div key={car.id} className="p-5 container">
       <Link
         key={car.id}
         to={`/car/${car.id}`}
@@ -39,7 +39,7 @@ const CarList = (props) => {
           <div>
             <p className="text-lg text-center px-5 py-2.5">{car.make}</p>
           </div>
-          <div>
+          <div className="text-lg text-center px-5 py-2.5">
             <StarRating />
           </div>
           <div>
@@ -47,7 +47,7 @@ const CarList = (props) => {
           </div>
         </div>
       </Link>
-    </>
+    </div>
   ));
   return (
     <div>
