@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { postFavorite } from '../redux/favorites/favorites';
@@ -21,11 +22,9 @@ const CarPage = () => {
     dispatch(postFavorite(newFavourite, sessionStatus));
   };
   return (
-    <div className="h-full flex mx-auto pt-10">
-      <div className="mt-10">
-        <h3 className="text-base font-semibold tracking-wide uppercase text-gray-900 sm:mt-0 sm:col-span-2 p-3">
-          {currentCar.make}
-          {' '}
+    <div className="h-full flex justify-between mx-auto pt-10">
+      <div className="flex flex-col justify-between">
+        <h3 className="text-3xl font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
           {currentCar.name}
         </h3>
         <div className="align-text-bottom mix-blend-multiply flex bg-gradient-to-t from-gray-800 via-transparent to-transparent">
@@ -45,7 +44,7 @@ const CarPage = () => {
             className="shadow-xl mix-blend-overlay"
             src={currentCar.image}
             alt="Toyota Corolla"
-          />
+        />
         </div>
         <div className="bg-white h-full container flex flex-col justify-between">
           <div className="bg-white p-9 pb-4">
@@ -60,8 +59,7 @@ const CarPage = () => {
               className={`w-full flex items-center justify-center px-8 py-6 border border-transparent text-base font-medium text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10 ${
                 sessionStatus.logged_in ? 'block' : 'hidden'
               }`}
-              onClick={addCarToFavorites}
-            >
+              onClick={addCarToFavorites}>
               Add to Favorites
             </button>
           </div>
