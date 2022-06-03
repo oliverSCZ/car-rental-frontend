@@ -10,7 +10,6 @@ const Favorite = ({ car, removeFavorite }) => {
 
   return (
     <div className="p-10 pt-20">
-      <h1 className="text-3xl font-bold">My Fav cars</h1>
       <div className="container mx-auto text-3xl">
         {name}
         {make}

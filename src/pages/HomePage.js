@@ -5,10 +5,11 @@ import Rent from '../imgs/rent.png';
 import DeskMenu from '../components/DeskMenu';
 
 const HomePage = () => {
+  window.scrollTo(0, 0);
   const cars = useSelector((state) => state.carsReducer);
 
   return (
-    <div className="h-screen p-10 pt-20 md:p-0 lg:p-0">
+    <div className="f-full p-10 pt-20 md:p-0 lg:p-0">
       <div className="hidden pt-10 w-full lg:flex-col md:flex-col lg:flex md:flex md:h-full lg:h-full md:bg-[url('https://images.unsplash.com/photo-1515404929826-76fff9fef6fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80')] lg:bg-[url('https://images.unsplash.com/photo-1515404929826-76fff9fef6fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80')]">
         <div className="flex w-full">
           <div className="w-1/2 px-5">
@@ -16,7 +17,7 @@ const HomePage = () => {
           </div>
           <DeskMenu />
         </div>
-        <div className="bg-slate-900/50 m-10 w-1/2 p-10 rounded-lg mt-32">
+        <div className="bg-slate-900/50 m-10 w-1/2 p-10 rounded-lg mt-24">
           <p className="text-white text-6xl w-1/2 text-left">Find a car anywhere</p>
           <p className="text-white text-xl text-left mt-10 w-2/3">
             The best offers for you at any point of your journey.
@@ -27,6 +28,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <h2 className="hidden text-4xl font-semibold p-10 md:block lg:block">Our Cars</h2>
       <div className="">
         <CarList carSelector={cars} />
       </div>

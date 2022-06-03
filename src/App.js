@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage';
 import FavoritesList from './components/Favorites/FavoritesList';
 import CarPage from './pages/CarPage';
 import getData from './redux/getLocalData';
+import Footer from './components/Footer';
 
 getData();
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/car/:carId" element={<CarPage />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
