@@ -36,7 +36,7 @@ const FavoritesList = () => {
 
   const favorites = favoritesSelector.map((favorite) => {
     const currentCar = cars.filter(
-      (car) => car.id === parseInt(favorite.car_id, 10)
+      (car) => car.id === parseInt(favorite.car_id, 10),
     )[0];
     return (
       <Favorite
@@ -51,6 +51,7 @@ const FavoritesList = () => {
     <div className="p-10 pt-20">
       <h1 className="text-3xl font-bold">My Favorites</h1>
       <div className="container mx-auto flex flex-col">FAVS</div>
+      { /* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Slider {...settings}>{favorites}</Slider>
     </div>
   );

@@ -17,7 +17,7 @@ const CarPage = () => {
   const inFavorites = () => {
     if (favorites.length > 0) {
       const favorite = favorites.filter(
-        (fav) => fav.car_id === parseInt(currentCar.id, 10)
+        (fav) => fav.car_id === parseInt(currentCar.id, 10),
       );
 
       return favorite.length > 0;
@@ -34,6 +34,7 @@ const CarPage = () => {
     dispatch(postFavorite(newFavourite, sessionStatus));
   };
 
+  // eslint-disable-next-line no-unused-vars
   const removeCarToFavorites = (favoriteId) => {
     const favorite = {
       id: favoriteId,
@@ -51,7 +52,8 @@ const CarPage = () => {
           <div className="z-50 absolute text-xl self-end text-white p-5 flex w-full justify-between items-end">
             <StarRating />
             <div className="flex align-bottom content-end px-5 font-semibold">
-              <span className="align-bottom mx-2">{currentCar.make}</span>-
+              <span className="align-bottom mx-2">{currentCar.make}</span>
+              -
               <span className="align-bottom mx-2">{currentCar.model}</span>
             </div>
           </div>
