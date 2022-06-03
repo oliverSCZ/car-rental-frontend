@@ -6,7 +6,7 @@ import DeskMenu from '../components/DeskMenu';
 
 const HomePage = () => {
   window.scrollTo(0, 0);
-  const cars = useSelector((state) => state.carsReducer);
+  const carsSelector = useSelector((state) => state.carsReducer);
 
   return (
     <div className="f-full p-10 pt-20 md:p-0 lg:p-0">
@@ -43,8 +43,8 @@ const HomePage = () => {
       <h2 className="hidden text-4xl font-semibold p-10 md:block lg:block">
         Our Cars
       </h2>
-      <div className="">
-        <CarList carSelector={cars} />
+      <div>
+        <CarList cars={carsSelector || 0} />
       </div>
     </div>
   );

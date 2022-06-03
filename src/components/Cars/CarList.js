@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import StarRating from './StarRating';
 
 const CarList = (props) => {
-  let carList = [];
-  const { carSelector } = props;
-
+  const { cars } = props;
   const settings = {
     className: 'center',
     centerMode: true,
@@ -54,8 +52,8 @@ const CarList = (props) => {
       },
     ],
   };
-  const cars = carSelector;
-  carList = cars.map((car) => (
+  const carsArray = cars;
+  const carList = carsArray.map((car) => (
     <div key={car.id} className="container h-full p-2">
       <Link
         key={car.id}
@@ -98,7 +96,7 @@ const CarList = (props) => {
         <p>
           {car.id}
           /
-          {cars.length}
+          {carsArray.length}
         </p>
       </div>
     </div>
@@ -112,12 +110,14 @@ const CarList = (props) => {
 };
 
 CarList.propTypes = {
-  carSelector: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    make: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      make: PropTypes.string.isRequired,
+      model: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default CarList;
