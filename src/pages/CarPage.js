@@ -60,7 +60,7 @@ const CarPage = () => {
           <img
             className="shadow-xl mix-blend-overlay"
             src={currentCar.image}
-            alt="Toyota Corolla"
+            alt={currentCar.name}
           />
         </div>
         <div className="bg-white h-full container flex flex-col justify-between">
