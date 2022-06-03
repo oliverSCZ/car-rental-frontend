@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 body {
-    background-color: #F7F5FA;
+  background-color: #f7f5fa;
 }
 
 .application-header {
-    background-color: #F7F5FA;
+  background-color: #f7f5fa;
+}
+
+.slick-arrow {
+  color: #6300f6 !important;
 }

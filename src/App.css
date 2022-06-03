@@ -23,7 +23,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-input[type="radio"]{
+
+input[type="radio"] {
   display: none;
 }
 
