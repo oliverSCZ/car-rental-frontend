@@ -10,11 +10,22 @@ const CarList = (props) => {
   const settings = {
     className: 'center',
     centerMode: true,
-    infinite: true,
+    infinite: false,
     centerPadding: '30px',
     slidesToShow: 1,
     speed: 500,
     responsive: [
+      {
+        breakpoint: 1920,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+          centerPadding: '30px',
+          className: '',
+        },
+      },
       {
         breakpoint: 1280,
         settings: {
