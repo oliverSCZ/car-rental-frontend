@@ -65,7 +65,7 @@ const Favorite = ({ favorites }) => {
         key={currentCar.id}
       >
         <div className="flex flex-col justify-between">
-          <h3 className="text-sm font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
+          <h3 className="text-4xl font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
             {currentCar.name}
           </h3>
           <div className="align-text-bottom mix-blend-multiply flex bg-gradient-to-t from-gray-800 via-transparent to-transparent">

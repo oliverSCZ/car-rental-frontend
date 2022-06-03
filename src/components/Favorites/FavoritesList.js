@@ -21,16 +21,19 @@ const FavoritesList = () => {
       <div className="hidden md:flex lg:flex justify-between mx-auto py-6 bg-orange-700">
         <div className="w-1/2 px-5">
           <a href="/">
-            <img src={Rent} alt="rent" width={400} className="flex self-start justify-self-start p-3" />
+            <img
+              src={Rent}
+              alt="rent"
+              width={400}
+              className="flex self-start justify-self-start p-3"
+            />
           </a>
         </div>
         <DeskMenu />
       </div>
-      <div className="p-10 pt-20">
-        <h1 className="text-3xl font-bold">My Favorites</h1>
+      <div className="p-10 pt-10">
         <Favorite favorites={favoritesSelector} />
       </div>
-
     </div>
   );
 };
