@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import store from '../redux/configureStore';
 
-const baseURL = 'http://localhost:3001/users';
+const baseURL = 'https://stormy-lake-55546.herokuapp.com/users';
 
 const createUserAPI = async (baseURL, options) => {
   fetch(baseURL, options)
