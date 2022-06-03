@@ -16,7 +16,7 @@ const CarList = (props) => {
     speed: 500,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1900,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -71,18 +71,27 @@ const CarList = (props) => {
           />
         </div>
       </Link>
-      <div div className="rounded-b-lg bg-white grid grid-cols-2 gap-4 shadow-xl">
+      <div
+        div
+        className="rounded-b-lg bg-white grid grid-cols-2 gap-4 shadow-xl"
+      >
         <div>
-          <h3 className="text-lg text-left font-semibold px-5 py-2.5">{car.name}</h3>
+          <h3 className="text-lg text-left font-semibold px-5 py-2.5">
+            {car.name}
+          </h3>
         </div>
         <div>
-          <p className="text-lg text-center font-semibold px-5 py-2.5">{car.make}</p>
+          <p className="text-lg text-center font-semibold px-5 py-2.5">
+            {car.make}
+          </p>
         </div>
         <div className="text-lg text-center font-semibold px-5 py-2.5 justify-start">
           <StarRating />
         </div>
         <div>
-          <p className="text-lg text-center font-semibold px-5 py-2.5">{car.model}</p>
+          <p className="text-lg text-center font-semibold px-5 py-2.5">
+            {car.model}
+          </p>
         </div>
       </div>
       <div className="pt-5 text-lg font-semibold md:hidden lg:hidden">
@@ -96,10 +105,8 @@ const CarList = (props) => {
   ));
   return (
     <div>
-      { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-      <Slider {...settings}>
-        {carList}
-      </Slider>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Slider {...settings}>{carList}</Slider>
     </div>
   );
 };
