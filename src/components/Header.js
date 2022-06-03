@@ -1,48 +1,62 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import Options from './Options';
-import Arrow from '../imgs/arrow.png';
-import Dots from '../imgs/dots.png';
+import { useDispatch, useSelector } from 'react-redux';
+// import Arrow from '../imgs/arrow.png';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
   const dispatch = useDispatch();
+  const showMenu = useSelector((state) => state.optionsStatus);
   return (
     <div className="fixed z-40 w-full">
-      <header className="sticky flex h-16 justify-between bg-orange-800 py-4 px-3">
-        <div className="invert">
-          <button
-            type="button"
-            id="go-back"
+      <header className="sticky h-16 flex justify-between py-4 px-3 bg-transparent">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`h-10 w-10 ${pathname === '/' ? 'hidden' : 'block'}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
             onClick={() => {
               navigate('/');
               dispatch({ type: 'HIDE' });
             }}
-            className={`${
-              pathname === '/' ? 'hidden' : 'block'
-            }`}
           >
-            <img
-              alt="arrow-back"
-              src={Arrow}
-              width="25"
-              className=""
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
             />
-          </button>
+          </svg>
         </div>
-        <h1 className="font-Work text-2xl font-bold text-white">Rent-a-Car</h1>
-        <button
-          type="button"
-          className="pr-3"
+        <h1
+          className={`font-Work text-2xl font-bold text-gray-800 ${
+            pathname === '/login' ? 'hidden' : 'block'
+          } ${pathname === '/signup' ? 'hidden' : 'block'} ${pathname.includes('/car/') ? 'hidden' : 'block'} ${
+            showMenu.show ? 'hidden' : 'block'
+          }`}
+        >
+          RENT-A-CAR
+        </h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`h-10 w-10 pr-2 ${showMenu.show ? 'hidden' : 'block'}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
           onClick={() => dispatch({ type: 'SHOW' })}
         >
-          <img alt="options" src={Dots} width="25" className="pt-1 invert" />
-        </button>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
       </header>
-      <Options />
     </div>
   );
 };

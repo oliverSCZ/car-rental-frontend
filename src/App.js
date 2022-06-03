@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
 import { useDispatch } from 'react-redux';
 import { getCars } from './redux/cars/cars';
+import Options from './components/Options';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
@@ -22,7 +23,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App h-screen">
+      <Options />
       <Header />
       <Routes>
         <Route path="/signup" element={<RegisterPage />} />
