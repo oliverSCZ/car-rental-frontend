@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import StarRating from './StarRating';
 
 const CarList = (props) => {
-  let carList = [];
-  const { carSelector } = props;
-
+  const { cars } = props;
   const settings = {
     className: 'center',
     centerMode: true,
@@ -16,7 +14,7 @@ const CarList = (props) => {
     speed: 500,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1900,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -54,8 +52,8 @@ const CarList = (props) => {
       },
     ],
   };
-  const cars = carSelector;
-  carList = cars.map((car) => (
+  const carsArray = cars;
+  const carList = carsArray.map((car) => (
     <div key={car.id} className="container h-full p-2">
       <Link
         key={car.id}
@@ -71,46 +69,55 @@ const CarList = (props) => {
           />
         </div>
       </Link>
-      <div div className="rounded-b-lg bg-white grid grid-cols-2 gap-4 shadow-xl">
+      <div
+        div
+        className="rounded-b-lg bg-white grid grid-cols-2 gap-4 shadow-xl"
+      >
         <div>
-          <h3 className="text-lg text-left font-semibold px-5 py-2.5">{car.name}</h3>
+          <h3 className="text-lg text-left font-semibold px-5 py-2.5">
+            {car.name}
+          </h3>
         </div>
         <div>
-          <p className="text-lg text-center font-semibold px-5 py-2.5">{car.make}</p>
+          <p className="text-lg text-center font-semibold px-5 py-2.5">
+            {car.make}
+          </p>
         </div>
         <div className="text-lg text-center font-semibold px-5 py-2.5 justify-start">
           <StarRating />
         </div>
         <div>
-          <p className="text-lg text-center font-semibold px-5 py-2.5">{car.model}</p>
+          <p className="text-lg text-center font-semibold px-5 py-2.5">
+            {car.model}
+          </p>
         </div>
       </div>
       <div className="pt-5 text-lg font-semibold md:hidden lg:hidden">
         <p>
           {car.id}
           /
-          {cars.length}
+          {carsArray.length}
         </p>
       </div>
     </div>
   ));
   return (
     <div>
-      { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-      <Slider {...settings}>
-        {carList}
-      </Slider>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Slider {...settings}>{carList}</Slider>
     </div>
   );
 };
 
 CarList.propTypes = {
-  carSelector: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    make: PropTypes.string.isRequired,
-    model: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  }).isRequired,
+  cars: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      make: PropTypes.string.isRequired,
+      model: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default CarList;

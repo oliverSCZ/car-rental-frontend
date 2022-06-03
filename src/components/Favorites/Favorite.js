@@ -7,6 +7,29 @@ import Slider from 'react-slick';
 import StarRating from '../Cars/StarRating';
 import { deleteFavourite } from '../../redux/favorites/favorites';
 
+// const Favorite = ({ car, removeFavorite }) => {
+//   const {
+//     image, make, model, name,
+//   } = car;
+
+//   return (
+//     <div className="p-10 pt-20">
+//       <div className="container mx-auto text-3xl">
+//         {name}
+//         {make}
+//         <img
+//           className="shadow-xl rounded-md"
+//           src={image}
+//           alt={model}
+//           width="300"
+//         />
+//         <button
+//           type="button"
+//           className="btn btn-link book-links border-end border-end-1 px-2"
+//           onClick={removeFavorite}
+//         >
+//           Remove
+//         </button>
 const Favorite = ({ favorites }) => {
   const dispatch = useDispatch();
 
@@ -25,7 +48,7 @@ const Favorite = ({ favorites }) => {
   const settings = {
     className: 'center',
     centerMode: true,
-    infinite: true,
+    infinite: false,
     centerPadding: '1px',
     slidesToShow: 1,
     speed: 500,
@@ -42,7 +65,7 @@ const Favorite = ({ favorites }) => {
         key={currentCar.id}
       >
         <div className="flex flex-col justify-between">
-          <h3 className="text-sm font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
+          <h3 className="text-4xl font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
             {currentCar.name}
           </h3>
           <div className="align-text-bottom mix-blend-multiply flex bg-gradient-to-t from-gray-800 via-transparent to-transparent">
@@ -72,7 +95,7 @@ const Favorite = ({ favorites }) => {
                 className={`active:bg-orange-400 w-full flex items-center justify-center px-8 py-6 border rounded-b-xl border-transparent text-base font-medium text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10 ${
                   sessionStatus.logged_in ? 'block' : 'hidden'
                 }`}
-                onClick={removeFavorite}
+                onClick={() => removeFavorite(favorite.id)}
               >
                 Remove
               </button>
