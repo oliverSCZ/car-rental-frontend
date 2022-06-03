@@ -41,7 +41,12 @@ const CarPage = () => {
       <div className="hidden md:flex lg:flex justify-between mx-auto py-6 bg-orange-700">
         <div className="w-1/2 px-5">
           <a href="/">
-            <img src={Rent} alt="rent" width={400} className="flex self-start justify-self-start p-3" />
+            <img
+              src={Rent}
+              alt="rent"
+              width={400}
+              className="flex self-start justify-self-start p-3"
+            />
           </a>
         </div>
         <DeskMenu />
@@ -63,13 +68,15 @@ const CarPage = () => {
             <img
               className="shadow-xl mix-blend-overlay mx-auto w-full"
               src={currentCar.image}
-              alt="Toyota Corolla"
-          />
+              alt={currentCar.make}
+            />
           </div>
           <div className="bg-white h-full flex flex-col justify-between">
             <div className="bg-white p-9 pb-4">
               <div className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2 p-3 text-justify md:text-xl lg:text-xl md:mb-20 lg:mb-20">
-                <p className="font-extrabold mb-5 text-base md:text-2xl lg:text-2xl">About this car</p>
+                <p className="font-extrabold mb-5 text-base md:text-2xl lg:text-2xl">
+                  About this car
+                </p>
                 {currentCar.description}
               </div>
             </div>

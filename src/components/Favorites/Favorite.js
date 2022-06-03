@@ -48,7 +48,7 @@ const Favorite = ({ favorites }) => {
   const settings = {
     className: 'center',
     centerMode: true,
-    infinite: true,
+    infinite: false,
     centerPadding: '1px',
     slidesToShow: 1,
     speed: 500,
@@ -95,7 +95,7 @@ const Favorite = ({ favorites }) => {
                 className={`active:bg-orange-400 w-full flex items-center justify-center px-8 py-6 border rounded-b-xl border-transparent text-base font-medium text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10 ${
                   sessionStatus.logged_in ? 'block' : 'hidden'
                 }`}
-                onClick={removeFavorite}
+                onClick={() => removeFavorite(favorite.id)}
               >
                 Remove
               </button>
