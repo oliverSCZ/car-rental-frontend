@@ -48,7 +48,7 @@ const CarList = (props) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -73,17 +73,24 @@ const CarList = (props) => {
       </Link>
       <div div className="rounded-b-lg bg-white grid grid-cols-2 gap-4 shadow-xl">
         <div>
-          <h3 className="text-lg text-left px-5 py-2.5">{car.name}</h3>
+          <h3 className="text-lg text-left font-semibold px-5 py-2.5">{car.name}</h3>
         </div>
         <div>
-          <p className="text-lg text-center px-5 py-2.5">{car.make}</p>
+          <p className="text-lg text-center font-semibold px-5 py-2.5">{car.make}</p>
         </div>
-        <div className="text-lg text-center px-5 py-2.5 justify-start">
+        <div className="text-lg text-center font-semibold px-5 py-2.5 justify-start">
           <StarRating />
         </div>
         <div>
-          <p className="text-lg text-center px-5 py-2.5">{car.model}</p>
+          <p className="text-lg text-center font-semibold px-5 py-2.5">{car.model}</p>
         </div>
+      </div>
+      <div className="pt-5 text-lg font-semibold md:hidden lg:hidden">
+        <p>
+          {car.id}
+          /
+          {cars.length}
+        </p>
       </div>
     </div>
   ));

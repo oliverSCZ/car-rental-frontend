@@ -9,3 +9,7 @@ body {
 .application-header {
     background-color: #F7F5FA;
 }
+
+.slick-arrow {
+    color:  #6300f6 !important;
+}
