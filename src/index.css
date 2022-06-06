@@ -11,5 +11,6 @@ body {
 }
 
 .slick-arrow {
-  color: #6300f6 !important;
+  filter: invert(50%) !important;
+  transform: scale(1.5) !important;
 }

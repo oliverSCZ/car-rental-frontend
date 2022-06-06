@@ -51,14 +51,16 @@ const CarPage = () => {
         </div>
         <DeskMenu />
       </div>
-      <div className="flex w-full mb-20">
+      <div className="flex lg:w-3/5 md:w-3/5 mb-20 mx-auto">
         <div className="flex flex-col justify-between mx-auto h-screen lg:h-fit">
           <h3 className="lg:text-6xl lg:py-10 text-3xl font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
             {currentCar.name}
           </h3>
           <div className="align-text-bottom mix-blend-multiply flex bg-gradient-to-t from-gray-800 via-transparent to-transparent">
             <div className="z-50 absolute text-xl self-end text-white p-5 flex w-full justify-between lg:justify-start md:justify-start items-end">
-              <StarRating />
+              <div className="pb-1">
+                <StarRating />
+              </div>
               <div className="flex align-bottom px-5 font-semibold lg:text-4xl">
                 <span className="align-bottom mx-2">{currentCar.make}</span>
                 -

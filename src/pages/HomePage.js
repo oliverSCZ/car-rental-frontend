@@ -3,6 +3,7 @@ import React from 'react';
 import CarList from '../components/Cars/CarList';
 import Rent from '../imgs/rent.png';
 import DeskMenu from '../components/DeskMenu';
+import FooterMobile from '../components/FooterMobile';
 
 const HomePage = () => {
   window.scrollTo(0, 0);
@@ -35,7 +36,7 @@ const HomePage = () => {
               className="rounded-full bg-orange-600 text-white w-1/2 ml-0 text-xl p-4 px-2"
               type="button"
             >
-              START FREE
+              GET AN ESTIMATE
             </button>
           </div>
         </div>
@@ -43,8 +44,11 @@ const HomePage = () => {
       <h2 className="hidden text-4xl font-semibold p-10 md:block lg:block">
         Our Cars
       </h2>
-      <div>
+      <div className="lg:py-10 lg:mb-10 mt-10">
         <CarList cars={carsSelector || 0} />
+      </div>
+      <div className="block lg:hidden md:hidden w-full border-t mt-10 pt-2">
+        <FooterMobile />
       </div>
     </div>
   );

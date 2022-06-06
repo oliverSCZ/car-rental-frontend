@@ -71,28 +71,28 @@ const CarList = (props) => {
       </Link>
       <div
         div
-        className="rounded-b-lg bg-white grid grid-cols-2 gap-4 shadow-xl"
+        className="rounded-b-lg bg-white grid grid-cols-2 shadow-xl"
       >
         <div>
-          <h3 className="text-lg text-left font-semibold px-5 py-2.5">
+          <h3 className="w-full text-lg text-left font-semibold pl-6 py-2">
             {car.name}
           </h3>
         </div>
         <div>
-          <p className="text-lg text-center font-semibold px-5 py-2.5">
+          <p className="text-sm text-center py-3">
             {car.make}
           </p>
         </div>
-        <div className="text-lg text-center font-semibold px-5 py-2.5 justify-start">
+        <div className="text-lg text-center font-semibold px-5 py-2 justify-start">
           <StarRating />
         </div>
         <div>
-          <p className="text-lg text-center font-semibold px-5 py-2.5">
+          <p className="text-sm text-center px-5 py-2">
             {car.model}
           </p>
         </div>
       </div>
-      <div className="pt-5 text-lg font-semibold md:hidden lg:hidden">
+      <div className="pt-5 text-lg md:hidden lg:hidden">
         <p>
           {car.id}
           /
