@@ -6,7 +6,6 @@ const sessionInitialState = {
 const sessionStatus = (state = sessionInitialState, action) => {
   switch (action.type) {
     case 'LOGIN':
-      // console.log(action.payload.user.username);
       return {
         ...state, token: action.payload.token, userId: action.payload.user.id, userName: action.payload.user.username, logged_in: true,
       };

@@ -37,7 +37,6 @@ const LoginPage = () => {
   if (session.logged_in) {
     navigate('/');
   }
-  // console.log(session);
   return (
     <div
       className="h-screen flex w-full content-center justify-center bg-sky-500/50"

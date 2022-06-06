@@ -24,8 +24,6 @@ const handleSubmit = (event) => {
     body,
   };
   createUserAPI(baseURL, options);
-  // console.log(psw);
-  // console.log(uname);
 };
 
 const RegisterPage = () => {

@@ -10,11 +10,6 @@ export const loadCars = (payload) => ({
   payload,
 });
 
-// const addCars = (payload) => ({
-//   type: ADD_CARS,
-//   payload,
-// });
-
 const getCarsFromApi = async () => {
   const response = await fetch(CARS_ENDPOINT);
   const cars = await response.json();
@@ -27,21 +22,6 @@ export const getCars = () => async (dispatch) => {
     dispatch(loadCars([...car]));
   });
 };
-
-// export const saveCarToApi = (car) => async (dispatch) => {
-//   await fetch(CARS_ENDPOINT, {
-//     method: 'post',
-//     body: JSON.stringify({
-//       ...car,
-//     }),
-//     headers: {
-//       Accept: 'application/json',
-//       'Content-Type': 'application/json',
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => dispatch(addCars(data)));
-// };
 
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
