@@ -53,7 +53,7 @@ const CarList = (props) => {
     ],
   };
   const carsArray = cars;
-  const carList = carsArray.map((car) => (
+  const carList = carsArray.map((car, index) => (
     <div key={car.id} className="container h-full p-2">
       <Link
         key={car.id}
@@ -94,7 +94,7 @@ const CarList = (props) => {
       </div>
       <div className="pt-5 text-lg md:hidden lg:hidden">
         <p>
-          {car.id}
+          {index + 1}
           /
           {carsArray.length}
         </p>
