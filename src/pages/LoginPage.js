@@ -4,16 +4,17 @@ import saveData from '../redux/saveLocalData';
 import store from '../redux/configureStore';
 import UserMessage from '../components/UserMessage';
 
-// const baseURL = 'https://stormy-lake-55546.herokuapp.com/login';
-const baseURL = 'http://127.0.0.1:3001/login';
+const baseURL = 'https://stormy-lake-55546.herokuapp.com/login';
+// const baseURL = 'http://127.0.0.1:3001/login'; // **uncomment for testing**
 
 const LoginPage = () => {
+  store.dispatch({ type: 'HIDE_MESSAGE' });
   const loginCall = async (baseURL, options) => {
     fetch(baseURL, options)
       .then((response) => response.json())
       .then((json) => {
-        if ('error' in json) {
-          store.dispatch({ type: 'SHOW_MESSAGE', payload: json.error });
+        if ('errors' in json) {
+          store.dispatch({ type: 'SHOW_MESSAGE', payload: json.errors });
         } else {
           store.dispatch({ type: 'HIDE_MESSAGE' });
           store.dispatch({ type: 'LOGIN', payload: json });

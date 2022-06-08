@@ -1,4 +1,6 @@
 import { FAVORITES_ENDPOINT } from '../../endpoints';
+// eslint-disable-next-line import/no-cycle
+import store from '../configureStore';
 
 const LOAD_FAVORITES = 'favorites/LOAD_FAVORITES';
 const ADD_FAVORITES = 'favorites/ADD_FAVORITES';
@@ -16,10 +18,13 @@ const addFavorites = (payload) => ({
   payload,
 });
 
-export const removeFavorite = (payload) => ({
-  type: REMOVE_FAVORITE,
-  payload,
-});
+export const removeFavorite = (payload) => {
+  store.dispatch({ type: 'SHOW_MESSAGE', payload });
+  return ({
+    type: REMOVE_FAVORITE,
+    payload,
+  });
+};
 
 const getFavoritesFromApi = async (sessionStatus) => {
   const { userId, token } = sessionStatus;
