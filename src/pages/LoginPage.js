@@ -6,45 +6,47 @@ import UserMessage from '../components/UserMessage';
 
 const baseURL = 'https://stormy-lake-55546.herokuapp.com/login';
 
-const userMessage = (response) => (
-  <UserMessage
-    message={{
-      message: response.error,
-      type: 'error',
-    }}
-  />
-);
-
-const loginCall = async (baseURL, options) => {
-  fetch(baseURL, options)
-    .then((response) => response.json())
-    .then((json) => {
-      if ('error' in json) {
-        userMessage(json);
-      } else {
-        store.dispatch({ type: 'LOGIN', payload: json });
-        saveData();
-      }
-    });
-};
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  const psw = event.target.psw.value;
-  const uname = event.target.username.value;
-  const body = JSON.stringify({
-    username: uname,
-    password: psw,
-  });
-  const options = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body,
-  };
-  loginCall(baseURL, options);
-};
-
 const LoginPage = () => {
+  const userMessage = (response) => (
+    <UserMessage
+      message={{
+        message: response.error,
+        type: 'error',
+      }}
+    />
+  );
+
+  const loginCall = async (baseURL, options) => {
+    fetch(baseURL, options)
+      .then((response) => response.json())
+      .then((json) => {
+        if ('error' in json) {
+          store.dispatch({ type: 'SHOW_MESSAGE', payload: json.error });
+          userMessage(json);
+        } else {
+          store.dispatch({ type: 'HIDE_MESSAGE' });
+          store.dispatch({ type: 'LOGIN', payload: json });
+          saveData();
+        }
+      });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const psw = event.target.psw.value;
+    const uname = event.target.username.value;
+    const body = JSON.stringify({
+      username: uname,
+      password: psw,
+    });
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+    };
+    loginCall(baseURL, options);
+  };
+
   const session = useSelector((state) => state.sessionStatus);
   const navigate = useNavigate();
 
@@ -60,8 +62,7 @@ const LoginPage = () => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-      }}
-    >
+      }}>
       <div className="w-full m-0 p-10 flex flex-col content-center justify-center bg-white/75">
         <div className="md:bg-slate-800/50 lg:bg-slate-800/50 md:rounded-xl lg:rounded-xl md:p-10 lg:p-10 md:w-1/2 lg:w-1/2 md:mx-auto lg:mx-auto">
           <h1 className="text-4xl mb-2">Sign in</h1>
@@ -70,7 +71,7 @@ const LoginPage = () => {
               Hello there! Sign in and start adding your favorites
             </p>
           </div>
-          {userMessage}
+          <UserMessage type="error" />
           <div className="container mx-auto flex flex-col w-full">
             <form onSubmit={handleSubmit}>
               <div className="container flex flex-col">
@@ -92,8 +93,7 @@ const LoginPage = () => {
 
                 <button
                   className="rounded-full bg-orange-600 text-white w-1/2 mx-auto text-xl p-3"
-                  type="submit"
-                >
+                  type="submit">
                   Sign in
                 </button>
               </div>
