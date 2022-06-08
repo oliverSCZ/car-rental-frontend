@@ -10,7 +10,7 @@ const Footer = () => (
           className="rounded-full bg-orange-600 text-white text-xl p-4 px-10"
           type="button"
         >
-          START FREE
+          GET AN ESTIMATE
         </button>
       </div>
     </div>

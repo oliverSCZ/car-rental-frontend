@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import saveData from '../redux/saveLocalData';
 import store from '../redux/configureStore';
 
-const baseURL = 'http://localhost:3001/login';
+const baseURL = 'https://stormy-lake-55546.herokuapp.com/login';
 
 const loginCall = async (baseURL, options) => {
   fetch(baseURL, options)
@@ -37,7 +37,6 @@ const LoginPage = () => {
   if (session.logged_in) {
     navigate('/');
   }
-  // console.log(session);
   return (
     <div
       className="h-screen flex w-full content-center justify-center bg-sky-500/50"

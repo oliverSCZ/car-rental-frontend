@@ -7,29 +7,6 @@ import Slider from 'react-slick';
 import StarRating from '../Cars/StarRating';
 import { deleteFavourite } from '../../redux/favorites/favorites';
 
-// const Favorite = ({ car, removeFavorite }) => {
-//   const {
-//     image, make, model, name,
-//   } = car;
-
-//   return (
-//     <div className="p-10 pt-20">
-//       <div className="container mx-auto text-3xl">
-//         {name}
-//         {make}
-//         <img
-//           className="shadow-xl rounded-md"
-//           src={image}
-//           alt={model}
-//           width="300"
-//         />
-//         <button
-//           type="button"
-//           className="btn btn-link book-links border-end border-end-1 px-2"
-//           onClick={removeFavorite}
-//         >
-//           Remove
-//         </button>
 const Favorite = ({ favorites }) => {
   const dispatch = useDispatch();
 
@@ -61,23 +38,25 @@ const Favorite = ({ favorites }) => {
     )[0];
     return (
       <div
-        className="h-full flex justify-between mx-auto p-10 pt-10 mt-10 rounded-b-xl"
+        className="h-full flex justify-between mx-auto p-4 mt-10 rounded-b-xl"
         key={currentCar.id}
       >
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between lg:w-8/12 md:w-4/5 lg:mx-auto md:mx-auto">
           <h3 className="text-4xl font-bold tracking-wide text-gray-700 sm:mt-0 mb-5 sm:col-span-2 p-3">
             {currentCar.name}
           </h3>
           <div className="align-text-bottom mix-blend-multiply flex bg-gradient-to-t from-gray-800 via-transparent to-transparent">
-            <div className="z-50 absolute text-xl self-end text-white p-5 flex w-full justify-between items-end">
-              <StarRating />
-              <div className="flex align-bottom content-end px-5 font-semibold">
+            <div className="z-50 absolute text-sm md:text-xl lg:text-2xl self-end text-white p-5 flex w-1/2 items-end justify-start">
+              <div className="lg:pb-1 md:pb-1 pb-0.5 w-1/6 mr-10">
+                <StarRating />
+              </div>
+              <div className="flex align-bottom content-end px-5 lg:px-0 font-semibold">
                 <span className="align-bottom mx-2">{currentCar.make}</span>-
                 <span className="align-bottom mx-2">{currentCar.model}</span>
               </div>
             </div>
             <img
-              className="shadow-xl mix-blend-overlay rounded-xl"
+              className="shadow-xl mix-blend-overlay rounded-xl w-full"
               src={currentCar.image}
               alt={currentCar.name}
             />
