@@ -4,25 +4,16 @@ import saveData from '../redux/saveLocalData';
 import store from '../redux/configureStore';
 import UserMessage from '../components/UserMessage';
 
-const baseURL = 'https://stormy-lake-55546.herokuapp.com/login';
+// const baseURL = 'https://stormy-lake-55546.herokuapp.com/login';
+const baseURL = 'http://127.0.0.1:3001/login';
 
 const LoginPage = () => {
-  const userMessage = (response) => (
-    <UserMessage
-      message={{
-        message: response.error,
-        type: 'error',
-      }}
-    />
-  );
-
   const loginCall = async (baseURL, options) => {
     fetch(baseURL, options)
       .then((response) => response.json())
       .then((json) => {
         if ('error' in json) {
           store.dispatch({ type: 'SHOW_MESSAGE', payload: json.error });
-          userMessage(json);
         } else {
           store.dispatch({ type: 'HIDE_MESSAGE' });
           store.dispatch({ type: 'LOGIN', payload: json });
@@ -62,7 +53,8 @@ const LoginPage = () => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-      }}>
+      }}
+    >
       <div className="w-full m-0 p-10 flex flex-col content-center justify-center bg-white/75">
         <div className="md:bg-slate-800/50 lg:bg-slate-800/50 md:rounded-xl lg:rounded-xl md:p-10 lg:p-10 md:w-1/2 lg:w-1/2 md:mx-auto lg:mx-auto">
           <h1 className="text-4xl mb-2">Sign in</h1>
@@ -93,7 +85,8 @@ const LoginPage = () => {
 
                 <button
                   className="rounded-full bg-orange-600 text-white w-1/2 mx-auto text-xl p-3"
-                  type="submit">
+                  type="submit"
+                >
                   Sign in
                 </button>
               </div>

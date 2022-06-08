@@ -6,16 +6,15 @@ const UserMessage = ({ type }) => {
   const showMessage = useSelector((state) => state.messagesStatus);
 
   return (
-    <>
-      <div className={`p-5  ${showMessage.show ? 'block' : 'hidden'}`}>
-        <p
-          className={`text-lg ${
-            type === 'error' ? 'text-orange-700' : 'text-green-800'
-          }`}>
-          {showMessage.payload}
-        </p>
-      </div>
-    </>
+    <div className={`p-5  ${showMessage.show ? 'block' : 'hidden'}`}>
+      <p
+        className={`text-lg ${
+          type === 'error' ? 'text-orange-700' : 'text-green-800'
+        }`}
+      >
+        {showMessage.payload}
+      </p>
+    </div>
   );
 };
 
