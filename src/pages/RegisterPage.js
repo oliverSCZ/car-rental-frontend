@@ -1,13 +1,22 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import store from '../redux/configureStore';
+import UserMessage from '../components/UserMessage';
 
 const baseURL = 'https://stormy-lake-55546.herokuapp.com/users';
+// const baseURL = 'http://127.0.0.1:3001/users'; // **uncomment for testing**
 
 const createUserAPI = async (baseURL, options) => {
   fetch(baseURL, options)
     .then((response) => response.json())
-    .then((json) => store.dispatch({ type: 'LOGIN', payload: json }));
+    .then((json) => {
+      if ('errors' in json) {
+        store.dispatch({ type: 'SHOW_MESSAGE', payload: json.errors });
+      } else {
+        store.dispatch({ type: 'HIDE_MESSAGE' });
+        store.dispatch({ type: 'LOGIN', payload: json });
+      }
+    });
 };
 
 const handleSubmit = (event) => {
@@ -28,6 +37,7 @@ const handleSubmit = (event) => {
 
 const RegisterPage = () => {
   const session = useSelector((state) => state.sessionStatus);
+  store.dispatch({ type: 'HIDE_MESSAGE' });
   const navigate = useNavigate();
   if (session.logged_in) {
     navigate('/');
@@ -51,6 +61,7 @@ const RegisterPage = () => {
               Welcome! We are happy to have to here!!
             </p>
           </div>
+          <UserMessage type="error" />
           <div className="container mx-auto flex flex-col w-full">
             <form onSubmit={handleSubmit}>
               <div className="container flex flex-col">
