@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserMessage = ({ message }) => {
-  const { userMessage } = message;
-
-  return (
-    <div>
-      <p
-        className={`text-sm ${
-          message.type === 'error' ? 'text-red-500' : 'text-green-600'
-        }`}>
-        {userMessage.message}
-      </p>
-    </div>
-  );
-};
+const UserMessage = ({ message }) => (
+  <div className="p-5">
+    <p
+      className={`text-lg ${
+        message.type === 'error' ? 'text-orange-700' : 'text-green-800'
+      }`}
+    >
+      {message.message}
+    </p>
+  </div>
+);
 
 UserMessage.propTypes = {
   message: PropTypes.shape({

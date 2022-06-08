@@ -5,12 +5,14 @@ import favoritesReducer from './favorites/favorites';
 import carsReducer from './cars/cars';
 import optionsStatus from './options/optionsReducer';
 import sessionStatus from './session/sessionReducer';
+import messagesStatus from './messages/userMessageReducer';
 
 const reducer = combineReducers({
   favoritesReducer,
   carsReducer,
   optionsStatus,
   sessionStatus,
+  messagesStatus,
   // additional reducers could be added here
 });
 
