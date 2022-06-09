@@ -89,10 +89,12 @@ const Favorite = ({ favorites }) => {
   return <Slider {...settings}>{favoritesList}</Slider>;
 };
 Favorite.propTypes = {
-  favorites: PropTypes.shape({
-    car_id: PropTypes.number.isRequired,
-    user_id: PropTypes.number.isRequired,
-  }).isRequired,
+  favorites: PropTypes.arrayOf(
+    PropTypes.shape({
+      car_id: PropTypes.number.isRequired,
+      user_id: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Favorite;

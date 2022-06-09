@@ -1,6 +1,7 @@
-import { useSelector } from 'react-redux';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CarList from '../components/Cars/CarList';
+import { getFavorites } from '../redux/favorites/favorites';
 import Rent from '../imgs/rent.png';
 import DeskMenu from '../components/DeskMenu';
 import FooterMobile from '../components/FooterMobile';
@@ -8,6 +9,16 @@ import FooterMobile from '../components/FooterMobile';
 const HomePage = () => {
   window.scrollTo(0, 0);
   const carsSelector = useSelector((state) => state.carsReducer);
+
+  const dispatch = useDispatch();
+
+  const sessionStatus = useSelector((state) => state.sessionStatus);
+
+  useEffect(() => {
+    if (sessionStatus.logged_in) {
+      dispatch(getFavorites(sessionStatus));
+    }
+  }, []);
 
   return (
     <div className="f-full p-10 pt-20 md:p-0 lg:p-0">
