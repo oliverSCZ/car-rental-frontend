@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import store from '../redux/configureStore';
+import { store } from '../redux/configureStore';
 import UserMessage from '../components/UserMessage';
 
 const baseURL = 'https://stormy-lake-55546.herokuapp.com/users';

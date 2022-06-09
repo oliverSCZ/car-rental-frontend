@@ -1,4 +1,4 @@
-import store from './configureStore';
+import { store } from './configureStore';
 import saveData from './saveLocalData';
 
 const getData = () => {
