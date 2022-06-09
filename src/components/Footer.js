@@ -3,7 +3,7 @@ import Rent from '../imgs/rent.png';
 
 const Footer = () => (
   <div className="hidden w-full md:block lg:block mr-0">
-    <div className="w-full bg-center text-white text-2xl flex flex-col pt-10 md:bg-[url('https://images.unsplash.com/photo-1581609836630-9007630f7a7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80')] lg:bg-[url('https://images.unsplash.com/photo-1581609836630-9007630f7a7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80')]">
+    <div className="w-full bg-center text-white text-2xl flex flex-col pt-10 md:bg-[url('https://images.unsplash.com/photo-1528108613580-2e4f3cf2533f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1856&q=80')] lg:bg-[url('https://images.unsplash.com/photo-1528108613580-2e4f3cf2533f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1856&q=80')]">
       <p className="text-white">A sheer driving pleasure</p>
       <div className="flex mx-auto my-10">
         <button

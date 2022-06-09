@@ -1,4 +1,4 @@
-import store from './configureStore';
+import { store } from './configureStore';
 
 const saveData = () => {
   const sessionData = store.getState().sessionStatus;

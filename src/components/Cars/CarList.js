@@ -74,7 +74,7 @@ const CarList = (props) => {
         className="rounded-b-lg bg-white grid grid-cols-2 shadow-xl"
       >
         <div>
-          <h3 className="w-full text-lg text-left font-semibold pl-6 py-2">
+          <h3 className="w-full text-base text-left font-semibold pl-6 py-2">
             {car.name}
           </h3>
         </div>
