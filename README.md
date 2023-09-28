@@ -32,7 +32,7 @@ The API for this project was built with Ruby on Rails. For more information and 
 
 ## 🚀 Live Demo Link
 
-This project has been deployed with [Heroku](https://www.heroku.com/) and can be viewed [live here](https://prismatic-kringle-942d3e.netlify.app/).
+This project has been deployed and you can be viewed [live here](https://prismatic-kringle-942d3e.netlify.app/).
 
 <br>
 
